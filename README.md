@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # breakie
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# BA-bike-assistant-
+bike maintenance guide
+>>>>>>> 534e2a966a1917e7236aa78f8e2a04a6b2aca3f8
