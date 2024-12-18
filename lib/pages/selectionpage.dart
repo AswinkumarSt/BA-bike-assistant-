@@ -1,3 +1,8 @@
+import 'package:breakie/pages/classicrebornpage.dart';
+import 'package:breakie/pages/himalayan450page.dart';
+import 'package:breakie/pages/meteor350Page.dart';
+import 'package:breakie/pages/mt-15page.dart';
+import 'package:breakie/pages/r15page.dart';
 import 'package:flutter/material.dart';
 
 class SelectionPage extends StatefulWidget {
@@ -8,21 +13,18 @@ class SelectionPage extends StatefulWidget {
 }
 
 class _SelectionPageState extends State<SelectionPage> {
-  String _selectedOption1 =
-      'Royal Enfield'; // Default value for the first dropdown
+  String _selectedOption1 = 'Royal Enfield'; // Default value for the first dropdown
   String _selectedOption2 = ''; // Default value for the second dropdown
 
-  // Map of options for the second dropdown based on the first dropdown selection
   final Map<String, List<String>> _dependentOptions = {
     'Royal Enfield': ['Meteor 350', 'Himalayan 450', 'Classic reborn'],
     'Yamaha': ['Mt-15', 'R15'],
-    'Honda ': ['CB-350RS', 'CB-350', 'Highness', 'Unicorn'],
+    'Honda': ['CB-350RS', 'CB-350', 'Highness', 'Unicorn'],
     'Jawa': ['42 bobber'],
   };
 
   @override
   Widget build(BuildContext context) {
-    // Get the current options for the second dropdown
     List<String> optionsForSecondDropdown =
         _dependentOptions[_selectedOption1] ?? [];
     if (_selectedOption2.isEmpty ||
@@ -67,8 +69,8 @@ class _SelectionPageState extends State<SelectionPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 40, // Set the width of the container
-                        height: 40, // Set the height of the container
+                        width: 40,
+                        height: 40,
                         margin: const EdgeInsets.only(
                           top: 20,
                           left: 0,
@@ -90,7 +92,6 @@ class _SelectionPageState extends State<SelectionPage> {
                       ),
                     ],
                   ),
-                  // First dropdown
                   const SizedBox(height: 20),
                   const Text(
                     'Choose your brand',
@@ -116,8 +117,7 @@ class _SelectionPageState extends State<SelectionPage> {
                     onChanged: (String? newValue) {
                       setState(() {
                         _selectedOption1 = newValue!;
-                        _selectedOption2 =
-                            ''; // Reset the second dropdown when the first changes
+                        _selectedOption2 = '';
                       });
                     },
                     dropdownColor: Colors.white,
@@ -127,7 +127,6 @@ class _SelectionPageState extends State<SelectionPage> {
                       fontSize: 16,
                     ),
                   ),
-                  // Second dropdown
                   const SizedBox(height: 20),
                   const Text(
                     'Choose your Model',
@@ -167,13 +166,54 @@ class _SelectionPageState extends State<SelectionPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
+                  ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, '');
+                      if (_selectedOption2.isNotEmpty) {
+                        switch (_selectedOption2) {
+                          case 'Meteor 350':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Meteor350Page(),
+                              ),
+                            );
+                            break;
+                          case 'Himalayan 450':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Himalayan450Page(),
+                              ),
+                            );
+                            break;
+                          case 'Classic reborn':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ClassicRebornPage(),
+                              ),
+                            );
+                            break;
+                          case 'Mt-15':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Mt15Page(),
+                              ),
+                            );
+                            break;
+                          case 'R15':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => R15Page(),
+                              ),
+                            );
+                            break;
+                          default:
+                            break;
+                        }
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -187,13 +227,13 @@ class _SelectionPageState extends State<SelectionPage> {
                     ),
                     child: const Text(
                       'Submit',
-                      style: TextStyle(fontSize: 20,
-                      fontFamily: 'Cursive',
-                      color: Colors.white54),
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Cursive',
+                        color: Colors.white54,
+                      ),
                     ),
                   ),
-                    ],
-                  )
                 ],
               ),
             ),
