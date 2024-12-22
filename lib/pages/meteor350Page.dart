@@ -20,54 +20,131 @@ class _Meteor350PageState extends State<Meteor350Page> {
     {
       'title': 'Front Axle Greasing',
       'description':
-          'Smooth rotation of the front wheel of your Royal Enfield Meteor depends how well you maintain its axle. Follow the steps in this video to do it yourself.',
-      'videoId': 'Kk-Ka68wZt4', // Replace with the actual YouTube video ID
+          'Smooth rotation of the front wheel of your Royal Enfield Meteor depends how well you maintain its axle.',
+      'videoId': 'Kk-Ka68wZt4',
     },
     {
       'title': 'Oil Change Tutorial',
       'description':
-          'Learn how to change the engine oil for your Royal Enfield Meteor to ensure smooth performance.',
-      'videoId': 'CK3BNgcaM1g', // Replace with another YouTube video ID
+          'Learn how to change the engine oil for your Royal Enfield Meteor for smooth performance.',
+      'videoId': 'CK3BNgcaM1g',
+    },
+    {
+      'title': 'Air Filter Replacement',
+      'description': 'Step-by-step instructions to replace the air filter.',
+      'videoId': 'UERG-cpbnuI',
+    },
+    {
+      'title': 'Chain Cleaning and Lubrication',
+      'description': 'Proper chain maintenance guide.',
+      'videoId': 'jk03zdZ1Hhk',
+    },
+    {
+      'title': 'Clutch Cable Replacement',
+      'description': 'Replacing the clutch cable for smoother rides.',
+      'videoId': 'dJnHbjK4JUY',
+    },
+    {
+      'title': 'Battery Inspection and Replacement',
+      'description': 'Learn to inspect and replace your bike battery.',
+      'videoId': 'g0PLn56DNMc',
+    },
+    {
+      'title': 'Front Wheel Removal',
+      'description': 'A guide to safely remove the front wheel.',
+      'videoId': '5OLva1gh0Nk',
+    },
+    {
+      'title': 'Rear Wheel Removal',
+      'description': 'Step-by-step rear wheel removal guide.',
+      'videoId': 'pKiyqdzALDw',
+    },
+    {
+      'title': 'Oil Level Inspection',
+      'description': 'How to check your engine oil level.',
+      'videoId': 'vKanQyUkJs',
+    },
+    {
+      'title': 'Tubeless Tyre Puncture Repair',
+      'description': 'DIY tubeless tyre puncture repair.',
+      'videoId': 'MRQlUFuX-qk',
     },
   ];
 
+  String searchQuery = "";
+
   @override
   Widget build(BuildContext context) {
+    // Filter tutorials based on the search query
+    List<Map<String, String>> filteredTutorials = tutorials
+        .where((tutorial) => tutorial['title']!
+            .toLowerCase()
+            .contains(searchQuery.toLowerCase()))
+        .toList();
+
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: const Text(
+            'Meteor 350',
+            style: TextStyle(
+              color: Colors.white70,
+            ),
+          ),
+        ),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/selectionpage');
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white70,
+            )),
+        backgroundColor: Colors.black,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              color: Colors.white70,
+            ),
+            onPressed: () {
+              showSearchDialog();
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           // Top Section: Slideshow
-          Expanded(
-            flex: 0,
-            child: CarouselSlider(
-              options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                viewportFraction: 1.0,
-                aspectRatio: 1 / 1,
-                autoPlayInterval: const Duration(seconds: 3),
-              ),
-              items: slideshowImages.map((imagePath) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(imagePath),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
+          CarouselSlider(
+            options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              viewportFraction: 1.0,
+              aspectRatio: 16 / 12,
+              autoPlayInterval: const Duration(seconds: 3),
             ),
+            items: slideshowImages.map((imagePath) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(imagePath),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
+              );
+            }).toList(),
           ),
 
           // Bottom Section: Sliding Card UI
+          const SizedBox(height: 0),
           Expanded(
-            flex: 1,
             child: Container(
               color: Colors.black,
               child: Column(
@@ -79,19 +156,20 @@ class _Meteor350PageState extends State<Meteor350Page> {
                       'DIY Tutorials',
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white70,
                       ),
                     ),
                   ),
                   Expanded(
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: tutorials.length,
+                      itemCount: filteredTutorials.length,
                       itemBuilder: (context, index) {
-                        final tutorial = tutorials[index];
+                        final tutorial = filteredTutorials[index];
                         return Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(
+                              bottom: 30, top: 20, left: 10),
                           child: Card(
                             elevation: 5,
                             shape: RoundedRectangleBorder(
@@ -108,7 +186,7 @@ class _Meteor350PageState extends State<Meteor350Page> {
                                       initialVideoId: tutorial['videoId']!,
                                       flags: const YoutubePlayerFlags(
                                         autoPlay: false,
-                                        mute: false,
+                                        mute: true,
                                       ),
                                     ),
                                     showVideoProgressIndicator: true,
@@ -153,6 +231,44 @@ class _Meteor350PageState extends State<Meteor350Page> {
           ),
         ],
       ),
+    );
+  }
+
+  void showSearchDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        String query = searchQuery;
+        return AlertDialog(
+          backgroundColor: Colors.black,
+          title: const Text(
+            'Search Tutorials',
+            style: TextStyle(color: Colors.white70),
+          ),
+          content: TextField(
+            style: TextStyle(color: Colors.white70),
+            autofocus: true,
+            decoration: const InputDecoration(hintText: 'Enter tutorial title'),
+            onChanged: (value) {
+              query = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  searchQuery = query;
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'Search',
+                style: TextStyle(color: Colors.white70),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
