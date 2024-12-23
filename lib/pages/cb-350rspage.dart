@@ -1,67 +1,73 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class Mt15Page extends StatefulWidget {
+class CB350RSPage extends StatefulWidget {
+  const CB350RSPage({super.key});
+
   @override
-  State<Mt15Page> createState() => _Mt15PageState();
+  State<CB350RSPage> createState() => _CB350RSPageState();
 }
 
-class _Mt15PageState extends State<Mt15Page> {
+class _CB350RSPageState extends State<CB350RSPage> {
   final List<String> slideshowImages = [
-    'assets/icons/mt_1.jpg', // Replace with actual MT-15 image paths
-    'assets/icons/mt_2.jpg',
-    'assets/icons/mt_3.jpg',
+    'assets/icons/cb_1.avif', // Replace with your actual image paths
+    'assets/icons/cb_2.jpg',
+    'assets/icons/cb_3.jpg',
   ];
 
   final List<Map<String, String>> tutorials = [
     {
-      'title': 'Oil Change Tutorial',
+      'title': 'Front Axle Greasing',
       'description':
-          'Learn how to change the engine oil for your Yamaha MT-15 for smooth performance.',
-      'videoId': 'CK3BNgcaM1g',
+          'Smooth rotation of the front wheel of your Honda CB350RS depends how well you maintain its axle.',
+      'videoId': 'Kk-Ka68wZt4',
     },
     {
-      'title': 'Brake Pedal Free Play Adjustment for Drum Brakes',
+      'title': 'Oil Change Tutorial',
       'description':
-          'Learn how to adjust the brake pedal free play for drum brakes to ensure optimal braking performance and safety.',
-      'videoId': 'zjhbxGVCFNU',
+          'Learn how to change the engine oil for your Honda CB350RS for smooth performance.',
+      'videoId': 'CK3BNgcaM1g',
     },
     {
       'title': 'Air Filter Replacement',
       'description': 'Step-by-step instructions to replace the air filter.',
-      'videoId': '1xn6WyArDpE',
+      'videoId': 'UERG-cpbnuI',
     },
     {
       'title': 'Chain Cleaning and Lubrication',
       'description': 'Proper chain maintenance guide.',
-      'videoId': 'bCM2J99Ug3Q',
+      'videoId': 'jk03zdZ1Hhk',
     },
     {
       'title': 'Clutch Cable Replacement',
       'description': 'Replacing the clutch cable for smoother rides.',
-      'videoId': 'wdTac0hDjQM',
+      'videoId': 'dJnHbjK4JUY',
     },
     {
       'title': 'Battery Inspection and Replacement',
       'description': 'Learn to inspect and replace your bike battery.',
-      'videoId': 'JFsiLiRLnWM',
-    },
-    {
-      'title': 'Front Axle Greasing',
-      'description':
-          'Smooth rotation of the front wheel of your Yamaha MT-15 depends how well you maintain its axle.',
-      'videoId': 'IZN3rOfQwFk',
+      'videoId': 'g0PLn56DNMc',
     },
     {
       'title': 'Front Wheel Removal',
       'description': 'A guide to safely remove the front wheel.',
-      'videoId': 'K4jcRojT04Q',
+      'videoId': '5OLva1gh0Nk',
     },
     {
       'title': 'Rear Wheel Removal',
       'description': 'Step-by-step rear wheel removal guide.',
-      'videoId': '7WJ10qLqQYE',
+      'videoId': 'pKiyqdzALDw',
+    },
+    {
+      'title': 'Oil Level Inspection',
+      'description': 'How to check your engine oil level.',
+      'videoId': 'vKanQyUkJs',
+    },
+    {
+      'title': 'Tubeless Tyre Puncture Repair',
+      'description': 'DIY tubeless tyre puncture repair.',
+      'videoId': 'MRQlUFuX-qk',
     },
   ];
 
@@ -80,22 +86,21 @@ class _Mt15PageState extends State<Mt15Page> {
       appBar: AppBar(
         title: Center(
           child: const Text(
-            'MT-15',
+            'CB-350RS',
             style: TextStyle(
               color: Colors.white70,
             ),
           ),
         ),
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.pushNamed(context, '/selectionpage');
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white70,
-          ),
-        ),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/selectionpage');
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white70,
+            )),
         backgroundColor: Colors.black,
         actions: [
           IconButton(
@@ -241,12 +246,9 @@ class _Mt15PageState extends State<Mt15Page> {
             style: TextStyle(color: Colors.white70),
           ),
           content: TextField(
-            style: const TextStyle(color: Colors.white70),
+            style: TextStyle(color: Colors.white70),
             autofocus: true,
-            decoration: const InputDecoration(
-              hintText: 'Enter tutorial title',
-              hintStyle: TextStyle(color: Colors.white54),
-            ),
+            decoration: const InputDecoration(hintText: 'Enter tutorial title'),
             onChanged: (value) {
               query = value;
             },

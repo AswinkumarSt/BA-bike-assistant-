@@ -1,3 +1,6 @@
+import 'package:breakie/pages/42bobberpage.dart';
+import 'package:breakie/pages/Highnesspage.dart';
+import 'package:breakie/pages/cb-350rspage.dart';
 import 'package:breakie/pages/classicrebornpage.dart';
 import 'package:breakie/pages/himalayan450page.dart';
 import 'package:breakie/pages/meteor350Page.dart';
@@ -13,13 +16,14 @@ class SelectionPage extends StatefulWidget {
 }
 
 class _SelectionPageState extends State<SelectionPage> {
-  String _selectedOption1 = 'Royal Enfield'; // Default value for the first dropdown
+  String _selectedOption1 =
+      'Royal Enfield'; // Default value for the first dropdown
   String _selectedOption2 = ''; // Default value for the second dropdown
 
   final Map<String, List<String>> _dependentOptions = {
     'Royal Enfield': ['Meteor 350', 'Himalayan 450', 'Classic reborn'],
     'Yamaha': ['Mt-15', 'R15'],
-    'Honda': ['CB-350RS', 'CB-350', 'Highness', 'Unicorn'],
+    'Honda': ['CB-350RS', 'Highness'],
     'Jawa': ['42 bobber'],
   };
 
@@ -178,6 +182,31 @@ class _SelectionPageState extends State<SelectionPage> {
                               ),
                             );
                             break;
+                          case '42 bobber':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Bobber42Page(),
+                              ),
+                            );
+                            break;
+                          case 'CB-350RS':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CB350RSPage(),
+                              ),
+                            );
+                            break;
+                          case 'Highness':
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HighnessPage(),
+                              ),
+                            );
+                            break;
+
                           case 'Himalayan 450':
                             Navigator.push(
                               context,
