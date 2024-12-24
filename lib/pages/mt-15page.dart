@@ -19,29 +19,25 @@ class _Mt15PageState extends State<Mt15Page> {
       'title': 'Oil Change Tutorial',
       'description':
           'Learn how to change the engine oil for your Yamaha MT-15 for smooth performance.',
-      'videoId': 'CK3BNgcaM1g',
+      'videoId': 'mRy63EBoiNg',
     },
     {
-      'title': 'Brake Pedal Free Play Adjustment for Drum Brakes',
+      'title': 'Clutch Lever Free Play Adjustment',
       'description':
-          'Learn how to adjust the brake pedal free play for drum brakes to ensure optimal braking performance and safety.',
-      'videoId': 'zjhbxGVCFNU',
+          'Learn how to adjust the Clutch lever free play to ensure optimal performance and safety.',
+      'videoId': 'cisFpP1uvwI',
     },
     {
       'title': 'Air Filter Replacement',
       'description': 'Step-by-step instructions to replace the air filter.',
-      'videoId': '1xn6WyArDpE',
+      'videoId': 'Oj6EdJaSa6k',
     },
     {
       'title': 'Chain Cleaning and Lubrication',
       'description': 'Proper chain maintenance guide.',
-      'videoId': 'bCM2J99Ug3Q',
+      'videoId': 'iqjyE4h6Xds',
     },
-    {
-      'title': 'Clutch Cable Replacement',
-      'description': 'Replacing the clutch cable for smoother rides.',
-      'videoId': 'wdTac0hDjQM',
-    },
+ 
     {
       'title': 'Battery Inspection and Replacement',
       'description': 'Learn to inspect and replace your bike battery.',
