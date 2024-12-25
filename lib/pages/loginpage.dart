@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
                     Container(
                         width: 40, // Set the width of the container
                         height: 40, // Set the height of the container
-                        margin: const EdgeInsets.only(top: 20.1, left: 0,bottom: 24,right: 5),
+                        margin: const EdgeInsets.only(top: 20.1, left: 0.0,bottom: 24.0,right: 5.0),
                         child: const Image(
                           image: AssetImage('assets/icons/Vector 4.png'),
                         ),
